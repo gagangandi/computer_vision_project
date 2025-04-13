@@ -52,6 +52,10 @@ if uploaded_image:
     model = load_model()
     detections, annotated_image = detect_objects(model, image)
 
+    # Show calibration matrix
+    st.subheader("Camera Calibration Matrix:")
+    st.write(camera_matrix)
+    
     # Show original image
     st.subheader("Original Image:")
     st.image(image_rgb, caption="Original Image", channels="RGB", use_container_width=True)
@@ -59,10 +63,6 @@ if uploaded_image:
     # Show annotated image with bounding boxes
     st.subheader("Annotated Image:")
     st.image(annotated_image, caption="Detected Objects", channels="BGR", use_container_width=True)
-
-    # Show calibration matrix
-    st.subheader("Camera Calibration Matrix:")
-    st.write(camera_matrix)
 
     # Display distances
     st.subheader("🔍 Detected Objects with Estimated Distances:")
