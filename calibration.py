@@ -1,6 +1,12 @@
 import numpy as np
 import cv2 as cv
 
+def save_camera_matrix(mtx, filename="camera_matrix.npy"):
+    np.save(filename, mtx)
+
+def load_camera_matrix(filename="camera_matrix.npy"):
+    return np.load(filename)
+
 def calibrate_camera(chessboard_images):
     objp = np.zeros((7*7, 3), np.float32)
     objp[:, :2] = np.mgrid[0:7, 0:7].T.reshape(-1, 2)
